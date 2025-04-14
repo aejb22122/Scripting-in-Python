@@ -1,0 +1,26 @@
+# Excercice 8.5
+
+# Open the file in read mode
+with open("mbox-short.txt", 'r') as file:
+    my_email_list = []  # Define the list outside the loop to store emails
+    
+    # Iterate over each line in the file
+    for line in file:
+        # Check if the line starts with "From "
+        if line.startswith("From "):
+            # Extract the email part using split
+            email = line.split()[1]  # The email is the second word in the line
+            print(email)
+            
+            # Append the email to the list
+            my_email_list.append(email)
+
+    # Print the final list of emails after the loop
+    # print(my_email_list)
+
+
+
+count = 0
+for mail in my_email_list:
+    count = count +1
+print("There were", count, "lines in the file with From as the first word")
