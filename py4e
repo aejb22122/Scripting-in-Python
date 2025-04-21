@@ -24,3 +24,41 @@ count = 0
 for mail in my_email_list:
     count = count +1
 print("There were", count, "lines in the file with From as the first word")
+
+
+
+
+# =============================================================================
+# 9.4 
+# =============================================================================
+
+biggest = None
+biggest_email = None
+
+# Dictionnary that will contain the emails and the values
+counts = dict()
+
+# Open the file in read mode
+with open("mbox-short.txt", 'r') as file:    
+    # Iterate over each line
+    for line in file:
+        # Check if the line starts with "From "
+        if line.startswith("From "): 
+            email = line.split()[1]
+            
+            # Start the counter
+            if email not in counts:
+                counts[email] = 1
+            else:
+                counts[email] += 1
+    print("This is the dictionnary :", counts)
+    
+    # Find the email address with the highest count
+    for email in counts:
+        if biggest is None or counts[email] > biggest:
+            biggest = counts[email]
+            biggest_email = email
+
+# Print the email address with the highest count and its count
+print(biggest_email, biggest)
+
